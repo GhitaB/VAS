@@ -6,7 +6,8 @@ import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import { Header } from './components/Layout/Header';
 import { Footer } from './components/Layout/Footer';
-import { pageViewsAtom, isLoggedInAtom } from './state';
+import { Home } from './components/Home/Home';
+import { isLoggedInAtom } from './state';
 
 
 function App() {
@@ -15,38 +16,40 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                {!isLoggedIn ? (
+        <div className="content">
+          <Router>
+            <div>
+              <nav>
+                <ul>
                   <li>
-                    <Link to="/login">Login</Link>
+                    <Link to="/">Home</Link>
                   </li>
-                ) : (
-                  <li>
-                    <Link to="/logout">Logout</Link>
-                  </li>
-                )}
-              </ul>
-            </nav>
+                  {!isLoggedIn ? (
+                    <li>
+                      <Link to="/login">Login</Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to="/logout">Logout</Link>
+                    </li>
+                  )}
+                </ul>
+              </nav>
 
-            <Switch>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/logout">
-                <Logout />
-              </Route>
-              <Route path="/">
-                Homepage
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/logout">
+                  <Logout />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        </div>
         <Footer />
       </div>
     </div>

@@ -1,3 +1,3 @@
 import { atom } from 'jotai';
 
-export const pageViewsAtom = atom(0)
+// export const pageViewsAtom = atom(0)
