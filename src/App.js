@@ -1,10 +1,15 @@
 import './vas-theme.scss';
+import { appConfig } from './config';
+
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
       <div className="container">
+        <h1>{appConfig.name}</h1>
+        <p>{appConfig.description}</p>
+
         <div className="box1">
           <p>Test</p>
         </div>
