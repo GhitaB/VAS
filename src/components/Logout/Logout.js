@@ -1,7 +1,15 @@
+import { useAtom } from 'jotai';
+import { isLoggedInAtom } from './../../state';
+import React, { useEffect } from 'react';
+
 export default function Logout() {
-  console.log("TODO logout");
+  const [, setLoggedIn] = useAtom(isLoggedInAtom);
+
+  useEffect(() => {
+    setLoggedIn(false);
+  });
 
   return (
-    <p>Thank you. Bye!</p>
+    <p>Thanks, bye!</p>
   );
 }

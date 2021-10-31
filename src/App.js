@@ -5,9 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { atom, useAtom } from 'jotai';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
+import { pageViewsAtom, isLoggedInAtom } from './state';
 
-const pageViewsAtom = atom(0)
-const isLoggedInAtom = atom(false)
 
 function App() {
   console.log(appConfig);
@@ -22,6 +21,7 @@ function App() {
         <h1>{appConfig.name}</h1>
         <p>{appConfig.description}</p>
         <p>Page views: {pageViews}</p>
+        <p>Is logged in: {isLoggedIn ? 'TRUE' : 'FALSE'}</p>
 
         <Router>
           <div>
@@ -30,12 +30,15 @@ function App() {
                 <li>
                   <Link to="/" onClick={() => setPageViews(c => c + 1)}>Home</Link>
                 </li>
-                <li>
-                  <Link to="/login" onClick={() => setPageViews(c => c + 1)}>Login</Link>
-                </li>
-                <li>
-                  <Link to="/logout" onClick={() => setPageViews(c => c + 1)}>Logout</Link>
-                </li>
+                {!isLoggedIn ? (
+                  <li>
+                    <Link to="/login" onClick={() => setPageViews(c => c + 1)}>Login</Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/logout" onClick={() => setPageViews(c => c + 1)}>Logout</Link>
+                  </li>
+                )}
               </ul>
             </nav>
 
