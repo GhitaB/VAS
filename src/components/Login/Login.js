@@ -62,7 +62,7 @@ export default function Login() {
 
   return (
     <div className="login-form">
-      <h3>Login</h3>
+      <h2>Login</h2>
       {!isLoggedIn ? (
         <div className="login-info">
           {hasErrors ? (

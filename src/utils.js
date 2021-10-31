@@ -21,3 +21,7 @@ export const canAccess = (userInfo, page) => {
 
   return workflow[page][userInfo.role];
 }
+
+export const isAdmin = (userInfo) => {
+  return userInfo.role === 'admin';
+}
