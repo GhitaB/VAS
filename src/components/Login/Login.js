@@ -31,7 +31,7 @@ const validate = (user, password) => {
 
 export default function Login() {
   const [isLoggedIn, setLoggedIn] = useAtom(isLoggedInAtom);
-  const [currentUserInfo, setCurrentUserInfo] = useAtom(currentUserInfoAtom);
+  const [, setCurrentUserInfo] = useAtom(currentUserInfoAtom);
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [hasErrors, setHasErrors] = useState(false);
@@ -75,7 +75,7 @@ export default function Login() {
           <button onClick={ loginValidation }>Login</button>
         </div>
       ) : (
-        <p className="msg-sucess">{message}</p>
+        <p className="msg-success">{message}</p>
       )}
     </div>
   );
