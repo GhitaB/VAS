@@ -13,6 +13,14 @@ div.container {
   margin: 3em;
   padding: 2em;
 
+  img.logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   div.box1 {
     background: $color1;
     color: black;

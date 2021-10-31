@@ -1,12 +1,13 @@
 import './vas-theme.scss';
 import { appConfig } from './config';
 
-
-
 function App() {
+  console.log(appConfig);
+
   return (
     <div className="App">
       <div className="container">
+        <img className="logo" src={"./logo200x200.png"} alt="logo" />
         <h1>{appConfig.name}</h1>
         <p>{appConfig.description}</p>
 

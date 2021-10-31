@@ -7,5 +7,5 @@ export const APP_DESCRIPTION = `Lorem ipsum dolor sit amet, consetetur
 
 export const appConfig = {
   name: APP_NAME,
-  description: APP_DESCRIPTION
+  description: APP_DESCRIPTION,
 }
