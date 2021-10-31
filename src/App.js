@@ -1,42 +1,34 @@
 import './vas-theme.scss';
 import { appConfig } from './config';
-import logo from './images/logo200x200.png';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
+import { Header } from './components/Layout/Header';
+import { Footer } from './components/Layout/Footer';
 import { pageViewsAtom, isLoggedInAtom } from './state';
 
 
 function App() {
-  console.log(appConfig);
-
-  const [pageViews, setPageViews] = useAtom(pageViewsAtom);
-  const [isLoggedIn, setLoggedIn] = useAtom(isLoggedInAtom);
-
+  const [isLoggedIn, ] = useAtom(isLoggedInAtom);
   return (
     <div className="App">
       <div className="container">
-        <img className="logo" src={logo} alt="logo" />
-        <h1>{appConfig.name}</h1>
-        <p>{appConfig.description}</p>
-        <p>Page views: {pageViews}</p>
-        <p>Is logged in: {isLoggedIn ? 'TRUE' : 'FALSE'}</p>
-
+        <Header />
         <Router>
           <div>
             <nav>
               <ul>
                 <li>
-                  <Link to="/" onClick={() => setPageViews(c => c + 1)}>Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 {!isLoggedIn ? (
                   <li>
-                    <Link to="/login" onClick={() => setPageViews(c => c + 1)}>Login</Link>
+                    <Link to="/login">Login</Link>
                   </li>
                 ) : (
                   <li>
-                    <Link to="/logout" onClick={() => setPageViews(c => c + 1)}>Logout</Link>
+                    <Link to="/logout">Logout</Link>
                   </li>
                 )}
               </ul>
@@ -55,22 +47,7 @@ function App() {
             </Switch>
           </div>
         </Router>
-
-        <div className="box1">
-          <p>Test</p>
-        </div>
-        <div className="box2">
-          <p>Test</p>
-        </div>
-        <div className="box3">
-          <p>Test</p>
-        </div>
-        <div className="box4">
-          <p>Test</p>
-        </div>
-        <div className="box5">
-          <p>Test</p>
-        </div>
+        <Footer />
       </div>
     </div>
   );

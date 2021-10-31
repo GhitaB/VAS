@@ -1,49 +1,28 @@
 @import 'styles/vas-palette.scss';
 
 body {
-  background: lightgray;
-  color: black;
-}
-
-h1 {
-  text-align: center;
+  background: $color3;
+  color: $color4;
 }
 
 div.container {
-  margin: 3em;
+  margin: 2em;
   padding: 2em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+
+  h1 {
+    text-align: center;
+    color: $color2;
+  }
 
   img.logo {
-    width: 100px;
+    width: 90px;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-
-  div.box1 {
-    background: $color1;
-    color: black;
-  }
-
-  div.box2 {
-    background: $color2;
-    color: black;
-  }
-
-  div.box3 {
-    background: $color3;
-    color: white;
-  }
-
-  div.box4 {
-    background: $color4;
-    color: white;
-  }
-
-  div.box5 {
-    background: $color5;
-    color: white;
-  }
 }
-
