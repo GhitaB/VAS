@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { isLoggedInAtom } from './state';
+import { isLoggedInAtom, currentUserInfoAtom } from './state';
 import { useState } from "react";
 import { getUserInfo } from "./../../utils";
 
@@ -25,11 +25,13 @@ const validate = (user, password) => {
   return {
     isValid: isValid,
     msg: msg,
+    userInfo: userInfo,
   }
 }
 
 export default function Login() {
   const [isLoggedIn, setLoggedIn] = useAtom(isLoggedInAtom);
+  const [currentUserInfo, setCurrentUserInfo] = useAtom(currentUserInfoAtom);
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [hasErrors, setHasErrors] = useState(false);
@@ -44,13 +46,14 @@ export default function Login() {
   }
 
   const loginValidation = (e) => {
-    const {isValid, msg} = validate(user, password);
+    const {isValid, msg, userInfo} = validate(user, password);
     console.log(msg);
     setMessage(msg);
 
     if(isValid) {
       setHasErrors(false);
       setLoggedIn(true);
+      setCurrentUserInfo(userInfo);
     } else {
       setHasErrors(true);
       setLoggedIn(false);

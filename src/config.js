@@ -8,4 +8,27 @@ export const APP_DESCRIPTION = `Lorem ipsum dolor sit amet, consetetur
 export const appConfig = {
   name: APP_NAME,
   description: APP_DESCRIPTION,
+
+  workflow: { // TODO is this secure?
+    home: {
+      anonymous: true,
+      member: true,
+      admin: true,
+    },
+    login: {
+      anonymous: true,
+      member: true,
+      admin: true,
+    },
+    logout: {
+      anonymous: false,
+      member: true,
+      admin: true,
+    },
+    admin: {
+      anonymous: false,
+      member: false,
+      admin: true,
+    },
+  }
 }
