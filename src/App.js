@@ -2,9 +2,14 @@ import './vas-theme.scss';
 import { appConfig } from './config';
 import logo from './images/logo200x200.png';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { atom, useAtom } from 'jotai';
+
+const pageViewsAtom = atom(0)
 
 function App() {
   console.log(appConfig);
+
+  const [pageViews, setPageViews] = useAtom(pageViewsAtom);
 
   return (
     <div className="App">
@@ -12,19 +17,20 @@ function App() {
         <img className="logo" src={logo} alt="logo" />
         <h1>{appConfig.name}</h1>
         <p>{appConfig.description}</p>
+        <p>Page views: {pageViews}</p>
 
         <Router>
           <div>
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/" onClick={() => setPageViews(c => c + 1)}>Home</Link>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/about" onClick={() => setPageViews(c => c + 1)}>About</Link>
                 </li>
                 <li>
-                  <Link to="/users">Users</Link>
+                  <Link to="/users" onClick={() => setPageViews(c => c + 1)}>Users</Link>
                 </li>
               </ul>
             </nav>
