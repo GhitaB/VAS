@@ -70,8 +70,10 @@ export default function Login() {
           ) : null }
           <label htmlFor="user">Username:</label>
           <input type="text" id="user" name="user" value={ user } onChange={ handleUserInputChange } />
+          <br />
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" value={ password } onChange={ handlePasswordInputChange } />
+          <br />
           <button onClick={ loginValidation }>Login</button>
         </div>
       ) : (
