@@ -11,14 +11,7 @@ export default function Login() {
   const [isLoggedIn, setLoggedIn] = useAtom(isLoggedInAtom);
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
-
-  // useEffect(() => {
-  //   if (validation(user, password)) {
-  //     setLoggedIn(true);
-  //   } else {
-  //     setLoggedIn(false);
-  //   }
-  // });
+  const [hasErrors, setHasErrors] = useState(false);
 
   const handleUserInputChange = (e) => {
     setUser(e.target.value);
@@ -30,8 +23,10 @@ export default function Login() {
 
   const loginValidation = (e) => {
     if(validate(user, password)) {
+      setHasErrors(false);
       setLoggedIn(true);
     } else {
+      setHasErrors(true);
       setLoggedIn(false);
     }
   }
@@ -41,9 +36,12 @@ export default function Login() {
       <h3>Login</h3>
       {!isLoggedIn ? (
         <div className="login-info">
-          <label for="user">Username:</label>
+          {hasErrors ? (
+            <p className="errorMsg">Invalid user or password.</p>
+          ) : null }
+          <label htmlFor="user">Username:</label>
           <input type="text" id="user" name="user" value={ user } onChange={ handleUserInputChange } />
-          <label for="password">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" value={ password } onChange={ handlePasswordInputChange } />
           <button onClick={ loginValidation }>Login</button>
         </div>
