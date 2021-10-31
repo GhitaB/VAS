@@ -1,0 +1,41 @@
+@import 'styles/vas-palette.scss';
+
+body {
+  background: lightgray;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+div.container {
+  margin: 3em;
+  padding: 2em;
+
+  div.box1 {
+    background: $color1;
+    color: black;
+  }
+
+  div.box2 {
+    background: $color2;
+    color: black;
+  }
+
+  div.box3 {
+    background: $color3;
+    color: white;
+  }
+
+  div.box4 {
+    background: $color4;
+    color: white;
+  }
+
+  div.box5 {
+    background: $color5;
+    color: white;
+  }
+}
+
