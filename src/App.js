@@ -3,13 +3,17 @@ import { appConfig } from './config';
 import logo from './images/logo200x200.png';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { atom, useAtom } from 'jotai';
+import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout';
 
 const pageViewsAtom = atom(0)
+const isLoggedInAtom = atom(false)
 
 function App() {
   console.log(appConfig);
 
   const [pageViews, setPageViews] = useAtom(pageViewsAtom);
+  const [isLoggedIn, setLoggedIn] = useAtom(isLoggedInAtom);
 
   return (
     <div className="App">
@@ -27,25 +31,23 @@ function App() {
                   <Link to="/" onClick={() => setPageViews(c => c + 1)}>Home</Link>
                 </li>
                 <li>
-                  <Link to="/about" onClick={() => setPageViews(c => c + 1)}>About</Link>
+                  <Link to="/login" onClick={() => setPageViews(c => c + 1)}>Login</Link>
                 </li>
                 <li>
-                  <Link to="/users" onClick={() => setPageViews(c => c + 1)}>Users</Link>
+                  <Link to="/logout" onClick={() => setPageViews(c => c + 1)}>Logout</Link>
                 </li>
               </ul>
             </nav>
 
-            {/* A <Switch> looks through its children <Route>s and
-                renders the first one that matches the current URL. */}
             <Switch>
-              <Route path="/about">
-                ABOUT here
+              <Route path="/login">
+                <Login />
               </Route>
-              <Route path="/users">
-                USERS here
+              <Route path="/logout">
+                <Logout />
               </Route>
               <Route path="/">
-                HOME here
+                Homepage
               </Route>
             </Switch>
           </div>
