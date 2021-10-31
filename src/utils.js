@@ -18,8 +18,14 @@ export const getUserInfo = (username) => {
 export const canAccess = (userInfo, page) => {
   // Check if current user has access permissions in a given context
   const workflow = appConfig.workflow;
+  let role = '';
 
-  return workflow[page][userInfo.role];
+  if(userInfo === undefined || userInfo === {}) {
+    role = "anonymous";
+  } else {
+    role = userInfo.role;
+  }
+  return workflow[page][role];
 }
 
 export const isAdmin = (userInfo) => {

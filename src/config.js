@@ -30,5 +30,10 @@ export const appConfig = {
       member: false,
       admin: true,
     },
+    'my-page': {
+      anonymous: false,
+      member: true,
+      admin: true,
+    }
   }
 }

@@ -1,11 +1,11 @@
 import { useAtom } from 'jotai';
 import { Forbidden } from './../Forbidden/Forbidden';
 import { isLoggedInAtom, currentUserInfoAtom } from './../../state';
-import { isAdmin } from './../../utils';
+import { canAccess } from './../../utils';
 
 export const Admin = () => {
   const [currentUserInfo, ] = useAtom(currentUserInfoAtom);
-  const hasAccess = isAdmin(currentUserInfo);
+  const hasAccess = canAccess(currentUserInfo, 'admin');
 
   return hasAccess ? (
     <div className="admin">

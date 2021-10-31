@@ -10,12 +10,11 @@ import { Home } from './components/Home/Home';
 import { MyPage } from './components/MyPage/MyPage';
 import { Admin } from './components/Admin/Admin';
 import { isLoggedInAtom, currentUserInfoAtom } from './state';
-import { isAdmin } from './utils';
+import { canAccess } from './utils';
 
 function App() {
   const [isLoggedIn, ] = useAtom(isLoggedInAtom);
   const [currentUserInfo, ] = useAtom(currentUserInfoAtom);
-  const hasAccess = isAdmin(currentUserInfo);
 
   return (
     <div className="App">
@@ -34,7 +33,7 @@ function App() {
                       <li>
                         <Link to="/my-page">My page</Link>
                       </li>
-                      {hasAccess ? (
+                      {canAccess(currentUserInfo, 'admin') ? (
                         <li>
                           <Link to="/admin">Admin</Link>
                         </li>
